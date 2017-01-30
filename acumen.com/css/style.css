@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	background-color:#000;
+	background-repeat:no-repeat;
+}
+.slider
+{
+	width: 500;
+	height: 250px;
+}
+.slider img
+{
+	width: 500;
+	height: 250;
+}
+
+a.grey 
+{
+	border:none;
+	color:#FC3;
+}
+#gre
+{
+	background:none;
+	border:none;
+}
+#gre a imge
+{
+	border:none;
+	background:none;
+}

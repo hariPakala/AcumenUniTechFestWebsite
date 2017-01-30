@@ -1,0 +1,1233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Acumen'11</title>
+<link href="css/style.css" type="text/css" rel="stylesheet"  />
+<link rel="stylesheet" type="text/css" media="screen" href="css/all-examples.css"> 
+<noscript> 
+		<style type="text/css">
+			#dock { top: 0; left: 100px; }
+			a.dock-item { position: relative; float: left; margin-right: 10px; }
+			.dock-item span { display: block; }
+			.stack { top: 0; }
+			.stack ul li { position: relative; }
+		</style>
+</noscript> 
+	<script type="text/javascript"  src="menujs/jquery.min.js"></script> 
+	<script type="text/javascript"  src="menujs/fisheye-iutil.min.js"></script> 
+	<script type="text/javascript" src="menujs/dock-example1.js"></script> 
+	    <style type="text/css">
+<!--
+#apDiv1 {
+	position:absolute;
+	width:186px;
+	height:42px;
+	z-index:1;
+	top: 20px;
+	left:879px;
+	color :#fc3;
+}
+    </style>
+
+<style type="text/css" >
+ #marqueecontainer
+
+
+        {
+
+
+
+            position: relative;
+
+
+
+
+
+
+
+            width: 224px; /*marquee width */
+
+
+
+
+
+
+
+            height: 195px; /*marquee height */
+
+
+
+
+
+
+
+            background-color: none;
+
+
+
+
+
+
+
+            overflow: hidden;
+
+
+
+
+
+
+
+            padding-left: 4px;
+
+
+
+
+
+
+
+            font-family: Verdana;
+
+
+
+
+
+
+
+            font-size: small;
+
+
+
+
+
+
+
+            font-style: normal;
+
+
+
+
+
+
+
+            line-height: normal;
+
+
+
+
+
+
+
+            font-weight: normal;
+
+
+
+
+
+
+
+            font-variant: normal;
+
+
+
+
+
+
+
+            text-transform: none;
+
+
+
+
+
+
+
+            text-decoration: none;
+
+
+
+
+
+
+
+            color: #525252;
+
+
+
+             top: 71px;
+
+
+
+             left: 4px;
+
+
+
+             padding-right: 2px;
+
+
+
+             padding-top: 2px;
+
+
+
+             padding-bottom: 2px;
+
+
+
+         }
+
+
+
+
+
+
+
+        a
+
+
+
+
+
+
+
+        {
+
+
+
+
+
+
+
+            text-decoration: none;
+
+
+
+
+
+
+
+            color: #1D62B3;
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+        a:hover
+
+
+
+
+
+
+
+        {
+
+
+
+
+
+
+
+            background: none;
+
+
+
+
+
+
+
+            font-weight: bold;
+
+
+
+
+
+
+
+            color: #E43C15;
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+        h4 
+
+
+
+
+
+
+
+        {
+
+
+
+
+
+
+
+            font-size: small
+
+
+
+
+
+
+
+             }
+             </style>
+
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+
+  <script type="text/javascript">
+
+
+
+
+
+
+
+        var delayb4scroll = 2000 //Specify initial delay before marquee starts to scroll on page (2000=2 seconds)
+
+
+
+
+
+
+
+        var marqueespeed = 1 //2 //Specify marquee scroll speed (larger is faster 1-10)
+
+
+
+
+
+
+
+        var pauseit = 1 //Pause marquee onMousever (0=no. 1=yes)?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////NO NEED TO EDIT BELOW THIS LINE////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var copyspeed = marqueespeed
+
+
+
+
+
+
+
+        var pausespeed = (pauseit == 0) ? copyspeed : 0
+
+
+
+
+
+
+
+        var actualheight = ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function scrollmarquee() {
+
+
+
+
+
+
+
+            if (parseInt(cross_marquee.style.top) > (actualheight * (-1) + 8))
+
+
+
+
+
+
+
+                cross_marquee.style.top = parseInt(cross_marquee.style.top) - copyspeed + "px"
+
+
+
+
+
+
+
+            else
+
+
+
+
+
+
+
+                cross_marquee.style.top = parseInt(marqueeheight) + 8 + "px"
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function initializemarquee() {
+
+
+
+
+
+
+
+            cross_marquee = document.getElementById("vmarquee")
+
+
+
+
+
+
+
+            cross_marquee.style.top = 0
+
+
+
+
+
+
+
+            marqueeheight = document.getElementById("marqueecontainer").offsetHeight
+
+
+
+
+
+
+
+            actualheight = cross_marquee.offsetHeight
+
+
+
+
+
+
+
+            if (window.opera || navigator.userAgent.indexOf("Netscape/7") != -1) { //if Opera or Netscape 7x, add scrollbars toscroll and exit
+
+
+
+
+
+
+
+                cross_marquee.style.height = marqueeheight + "px"
+
+
+
+
+
+
+
+                cross_marquee.style.overflow = "scroll"
+
+
+
+
+
+
+
+                return
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+            setTimeout('lefttime=setInterval("scrollmarquee()",30)', delayb4scroll)
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (window.addEventListener)
+
+
+
+
+
+
+
+            window.addEventListener("load", initializemarquee, false)
+
+
+
+
+
+
+
+        else if (window.attachEvent)
+
+
+
+
+
+
+
+            window.attachEvent("onload", initializemarquee)
+
+
+
+
+
+
+
+        else if (document.getElementById)
+
+
+
+
+
+
+
+            window.onload = initializemarquee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+
+
+
+
+
+
+        function onUpdating() {
+
+
+
+
+
+
+
+            // get the update progress div
+
+
+
+
+
+
+
+            var updateProgressDiv = $get('updateProgressDiv');
+
+
+
+
+
+
+
+            //  get the gridview element        
+
+
+
+
+
+
+
+            var gridView = $get('ctl00_ContentPlaceHolder1_UpdatePanel1');
+
+
+
+
+
+
+
+            // make it visible
+
+
+
+
+
+
+
+            updateProgressDiv.style.display = '';
+
+
+
+
+
+
+
+            // get the bounds of both the gridview and the progress div
+
+
+
+
+
+
+
+            var gridViewBounds = Sys.UI.DomElement.getBounds(gridView);
+
+
+
+
+
+
+
+            var updateProgressDivBounds = Sys.UI.DomElement.getBounds(updateProgressDiv);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var x;
+
+
+
+
+
+
+
+            var y;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //	do the math to figure out where to position the element
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //  center of gridview
+
+
+
+
+
+
+
+            //      x = gridViewBounds.x + Math.round(gridViewBounds.width / 2) - 
+
+
+
+Math.round(updateProgressDivBounds.width / 2);
+
+
+
+
+
+
+
+            //       y = gridViewBounds.y + Math.round(gridViewBounds.height / 2) - 
+
+
+
+Math.round(updateProgressDivBounds.height / 2);	    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //  top left of gridview
+
+
+
+
+
+
+
+            x = gridViewBounds.x;
+
+
+
+
+
+
+
+            y = gridViewBounds.y;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //  top right of gridview
+
+
+
+
+
+
+
+            //       x = (gridViewBounds.x + gridViewBounds.width - updateProgressDivBounds.width);
+
+
+
+
+
+
+
+            //        y = gridViewBounds.y;
+
+
+
+
+
+
+
+            //	set the progress element to this position
+
+
+
+
+
+
+
+            Sys.UI.DomElement.setLocation(updateProgressDiv, x, y);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function onUpdated() {
+
+
+
+
+
+
+
+            // get the update progress div
+
+
+
+
+
+
+
+            var updateProgressDiv = $get('updateProgressDiv');
+
+
+
+
+
+
+
+            // make it invisible
+
+
+
+
+
+
+
+            updateProgressDiv.style.display = 'none';
+
+
+
+
+
+
+
+            // alert('updated');
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+             
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script language="JavaScript" type="text/javascript">
+
+
+
+
+
+
+
+<!--        Begin
+
+
+
+
+
+
+
+        function popUp(URL) {
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+// End -->
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+//<![CDATA[
+
+
+
+
+
+
+
+Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder1$ScriptManager1', 
+
+
+
+document.getElementById('aspnetForm'));
+
+
+
+
+
+
+
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tctl00$ContentPlaceHolder1$UpdatePanel1'], [], [], 90);
+
+
+
+
+
+
+
+//]]>
+
+
+
+
+
+
+
+</script>
+
+    <SCRIPT>
+
+//Personal Counter- by Jaafar Bin Yusof, Singapore (jaafar66@yahoo.com)
+//Modified by JavaScript Kit (http://javascriptkit.com)
+//Visit http://javascriptkit.com for this script
+
+expireDate = new Date
+expireDate.setMonth(expireDate.getMonth()+6)
+jcount = eval(cookieVal("jaafarCounter"))
+jcount++
+document.cookie = "jaafarCounter="+jcount+";expires=" + expireDate.toGMTString()
+
+function cookieVal(cookieName) {
+thisCookie = document.cookie.split("; ")
+for (i=0; i<thisCookie.length; i++){
+	if (cookieName == thisCookie[i].split("=")[0]){
+		return thisCookie[i].split("=")[1]
+	}
+}
+return 0
+}
+
+function page_counter(){
+for (i=0;i<(7-jcount.toString().length);i++)
+document.write('<span class="counter">0</span>')
+for (y=0;y<(jcount.toString().length);y++)
+document.write('<span class="counter">'+jcount.toString().charAt(y)+'</span>')
+}
+</SCRIPT>
+
+</head>
+<body>
+<table align="center" background="images/background.png" style="background-repeat:no-repeat;color: #fc3"  height="999" width="1024" border="0">
+  <tr>
+    <td height="50" align="right">
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="449" height="50">
+  <param name="movie" value="images/col.swf" />
+  <param name="quality" value="high" />
+  <param name="allowScriptAccess" value="always" />
+  <param name="wmode" value="transparent">
+     <embed src="images/col.swf"
+      quality="high"
+      type="application/x-shockwave-flash"
+      WMODE="transparent"
+      width="449"
+      height="50"
+      pluginspage="http://www.macromedia.com/go/getflashplayer"
+      allowScriptAccess="always" />
+</object>
+    </td>
+  </tr>
+  <tr>
+    <td height="250" valign="top">
+    <table width="1015" border="0">
+      <tr>
+        <td width="409" height="250">&nbsp;</td>
+        <td width="596" valign="bottom" >
+        <div id="dock"> 
+		<div class="dock-container"> 
+			<a class="dock-item" href="index.html"><span>Home</span> <img src="images/dock/dock/home.png"  /></a> 
+			<a class="dock-item" href="About.html"><span>AboutUS</span><img src="images/dock/dock/aboutus.png" alt="contact" /></a> 
+			<a class="dock-item" href="ft/events.html"><span>Events</span><img src="images/dock/dock/events.png" alt="portfolio" /></a> 
+			<a class="dock-item" href="sponsor.html"><span>Sponsors</span><img src="images/dock/dock/Money.png" alt="music" /></a> 
+			<a class="dock-item" href="contact.html"><span>ContactUS</span><img src="images/dock/dock/contact.png" alt="video" /></a> 
+			<a class="dock-item" href="register.html"><span>Register</span><img src="images/dock/dock/register.png" alt="history" /></a> 
+		</div><!-- end div .dock-container --> 
+	</div>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr height="150">
+    <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="1020" height="150">
+      <param name="movie" value="images/acu3.swf" />
+      <param name="quality" value="high" />
+      <param name="allowScriptAccess" value="always" />
+      <param name="wmode" value="transparent" />
+      <embed src="images/acu3.swf"
+      quality="high"
+      type="application/x-shockwave-flash"
+      wmode="transparent"
+      width="1020"
+      height="150"
+      pluginspage="http://www.macromedia.com/go/getflashplayer"
+      allowscriptaccess="always" /></embed>
+    </object></td>
+  </tr>
+  <tr>
+    <td height="498" valign="top"><table width="1016" height="491" border="0">
+      <tr>
+        <td width="52" height="487">&nbsp;</td>
+        <td width="699" valign="top"><p><img src="images/visusmall.png" width="186" height="99" alt="visu" longdesc="http://www.visuglobaledu.com:8080/jsp/homePage/home.jsp" /></p>
+          <p><strong>Visu International Ltd. (Formerly Visu Consultants Ltd.),</strong> a pioneer in the field of <strong>'GLOBAL EDUCATION'</strong>is the main arm of <strong>Visu</strong> Group of Companies. Its core activity lies in assisting students to make the right choice with regard to higher education overseas. Every country on the globe has Universities which are vying for students across the frontiers. In such a scenario, it becomes an impossible task for a student to decide on the program, University and Country most suited to their requirements. In steps an experienced consultant like <strong>Visu</strong>, offering end to end services to our clients. With our experience and expertise in 'study abroad' spanning over two decades, we could be the trusted hand for any student.</p></td>
+        <td width="251" valign="top"><table width="245" border="0">
+          <tr>
+            <td height="300">
+            <div 
+
+align="center"> 
+
+    <br />
+
+    <marquee  scrollamount="2" 
+
+direction="up" loop="true" style="width: 50%; height: 176px"><CENTER><FONT 
+
+      color=#ffffff size=-1><STRONG>WELCOME TO VASAVI<BR />COLLEGE OF ENGG.<BR 
+
+      />THIS IS ACUMEN 2011<BR /><BR />ALL ARE WELCOME TO SUBMIT THEIR PRESENTATIONS<BR/>
+       <BR/> LAST DATE FOR SUBMISSION OF PPT IS 28th FEB 2011<BR/><BR/> 
+
+      </STRONG></FONT></CENTER></marquee></div>
+
+      
+
+            </td>
+          </tr>
+          <tr>
+            <td height="80" align="center">
+            <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.itfest.acumenvce.in&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;font=segoe+ui&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+            </td>
+          </tr>
+          <tr>
+            <td height="90">
+
+            </td>
+          </tr>
+        </table>
+          
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="27">&nbsp;</td>
+  </tr>
+</table>
+
+</body>
+</html>
